@@ -1,3 +1,10 @@
 notes.md
 *.sublime-*
 *container.*
+
+# Issue 4 branch only
+demo
+bower.json
+.editorconfig
+README.md
+LICENSE
