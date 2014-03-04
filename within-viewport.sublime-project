@@ -1,0 +1,13 @@
+{
+	"folders":
+	[
+		{
+			"file_exclude_patterns":
+			[
+				"within-viewport.sublime-project"
+			],
+			"follow_symlinks": true,
+			"path": "."
+		}
+	]
+}

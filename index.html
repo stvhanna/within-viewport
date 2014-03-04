@@ -1,85 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <meta charset='utf-8'>
+    <meta charset="utf-8">
+    <title>Within Viewport Demo</title>
 
-  <title>cpatik/within-viewport @ GitHub</title>
+    <!-- jQuery and the subsequent 2 scripts are all required to run the Within Viewport jQuery plugin -->
+    <script src="jquery.js"></script>
+    <script src="withinViewport.js"></script>
+    <script src="jquery.withinViewport.js"></script>
+    <!-- Only withinViewport.js is required to run the standalone version -->
 
-  <style type="text/css">
-    body {
-      margin-top: 1.0em;
-      background-color: #61585a;
-      font-family: Helvetica, Arial, FreeSans, san-serif;
-      color: #ffffff;
-    }
-    #container {
-      margin: 0 auto;
-      width: 700px;
-    }
-    h1 { font-size: 3.8em; color: #9ea7a5; margin-bottom: 3px; }
-    h1 .small { font-size: 0.4em; }
-    h1 a { text-decoration: none }
-    h2 { font-size: 1.5em; color: #9ea7a5; }
-    h3 { text-align: center; color: #9ea7a5; }
-    a { color: #9ea7a5; }
-    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
-    .download { float: right; }
-    pre { background: #000; color: #fff; padding: 15px;}
-    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
-    .footer { text-align:center; padding-top:30px; font-style: italic; }
-  </style>
+    <!-- The following files are only needed for this demo -->
+    <link href="demo.css" rel="stylesheet" media="all">
+    <script src="demo.js"></script>
 </head>
-
 <body>
-  <a href="http://github.com/cpatik/within-viewport"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
-
-  <div id="container">
-
-    <div class="download">
-      <a href="http://github.com/cpatik/within-viewport/zipball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
-      <a href="http://github.com/cpatik/within-viewport/tarball/master">
-        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+    <div id="explanation" class="" role="main">
+        <h1>Within Viewport</h1>
+        <div id="toggler" class="button minus small">Collapse</div>
+        <p>Scroll around the page. Boxes completely within the viewport will darken.</p>
+        <p>See the <a href="https://github.com/patik/within-viewport">code on GitHub</a> and the <a href="http://patik.com/blog/within-viewport-javascript-and-jquery-plugin/">blog post</a> for more info.</p>
+        <div id="thresholds">
+            <p>Set your own thresholds (in pixels):</p>
+            <form action="." method="post">
+                <div id="threshold-top">
+                    <label for="top">Top:</label>
+                    <input type="number" size="3" id="top" value="0" tabindex="1">
+                </div>
+                <div id="threshold-left">
+                    <label for="left">Left:</label>
+                    <input type="number" size="3" id="left" value="0" tabindex="1">
+                </div>
+                <div id="threshold-right">
+                    <label for="right">Right:</label>
+                    <input type="number" size="3" id="right" value="0" tabindex="1">
+                </div>
+                <div id="threshold-bottom">
+                    <label for="bottom">Bottom:</label>
+                    <input type="number" size="3" id="bottom" value="0" tabindex="1">
+                </div>
+                <div style="display:none;">
+                    <input type="checkbox" checked="checked" id="show-boundary" tabindex="1">
+                    <label for="show-boundary">Show boundary regions</label>
+                </div>
+            </form>
+            <p style="display:none;">Press <code>shift + arrow key</code>to nudge the page by 1 pixel</p>
+        </div>
     </div>
-
-    <h1><a href="http://github.com/cpatik/within-viewport">within-viewport</a>
-      <span class="small">by <a href="http://github.com/cpatik">cpatik</a></span></h1>
-
-    <div class="description">
-      JavaScript utility that determines whether an element is completely within the browser viewport
-    </div>
-
-    <h2>Authors</h2>
-<p>Craig Patik (cpatik@gmail.com)<br/>      </p>
-<h2>Contact</h2>
-<p>Craig Patik (cpatik@gmail.com)<br/>      </p>
-
-
-    <h2>Download</h2>
-    <p>
-      You can download this project in either
-      <a href="http://github.com/cpatik/within-viewport/zipball/master">zip</a> or
-      <a href="http://github.com/cpatik/within-viewport/tarball/master">tar</a> formats.
-    </p>
-    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
-      by running:
-      <pre>$ git clone git://github.com/cpatik/within-viewport</pre>
-    </p>
-
-    <div class="footer">
-      get the source code on GitHub : <a href="http://github.com/cpatik/within-viewport">cpatik/within-viewport</a>
-    </div>
-
-  </div>
-
-  <script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-12082176-1");
-pageTracker._trackPageview();
-} catch(err) {}</script>
+    <!-- Boundary lines -->
+    <div style="display:none;" class="boundary boundary-top"></div>
+    <div style="display:none;" class="boundary boundary-right"></div>
+    <div style="display:none;" class="boundary boundary-bottom"></div>
+    <div style="display:none;" class="boundary boundary-left"></div>
 </body>
 </html>
